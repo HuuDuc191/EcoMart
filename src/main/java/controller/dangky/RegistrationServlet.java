@@ -157,7 +157,7 @@ public class RegistrationServlet extends HttpServlet {
             customer.setAccountId(accountId);
             customer.setFullName(fullName);
             customer.setAddress(city + ", " + address);
-            customer.setBalance(0.0);
+            //customer.setBalance(0.0);
 
             CustomerDAO customerDAO = new CustomerDAO();
             int customerId = customerDAO.insertCustomer(customer);
