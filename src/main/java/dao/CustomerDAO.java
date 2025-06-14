@@ -15,12 +15,12 @@ public class CustomerDAO {
     }
 
     public int insertCustomer(Customer customer) throws SQLException {
-        String sql = "INSERT INTO Customer (AccountID, FullName, Address, Balance) OUTPUT INSERTED.CustomerID VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Customer (AccountID, FullName, Address) OUTPUT INSERTED.CustomerID VALUES (?, ?, ?)";
         try (Connection conn = dbContext.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, customer.getAccountId());
             stmt.setString(2, customer.getFullName());
             stmt.setString(3, customer.getAddress());
-            stmt.setDouble(4, customer.getBalance());
+            //stmt.setDouble(4, customer.getBalance());
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     int customerId = rs.getInt(1);
