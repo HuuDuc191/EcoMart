@@ -173,7 +173,7 @@ CREATE TABLE Product (
     CategoryID INT,
     SupplierID INT,
     [Status] NVARCHAR(50), -- 'Còn hàng', 'Hết hàng'
-    FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID),
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID),
     FOREIGN KEY (SupplierID) REFERENCES Supplier(SupplierID)
 );
 
