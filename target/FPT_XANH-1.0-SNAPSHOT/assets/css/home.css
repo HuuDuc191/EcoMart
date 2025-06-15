@@ -1,0 +1,310 @@
+/* --- Slideshow --- */
+.slideshow-container {
+    max-width: 1000px;
+    margin: auto;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+.mySlides {
+    display: none;
+}
+.mySlides img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    color: #fff;
+    font-size: 18px;
+    background-color: rgba(0,0,0,0.3);
+    transition: 0.3s;
+    border-radius: 50%;
+}
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.6);
+}
+.next { right: 10px; }
+.prev { left: 10px; }
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 3px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+.active, .dot:hover {
+    background-color: #7a4e2d;
+}
+
+/* --- Category horizontal --- */
+.category2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #f9f5f0; /* Màu be */
+    padding: 10px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.category-sanpham {
+    width: 140px;
+    margin: 10px;
+    text-align: center;
+    background-color: #fffaf3;
+    border-radius: 12px;
+    padding: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.category-sanpham:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.category-sanpham img {
+    display: block;
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.category-sanpham p {
+    font-size: 14px;
+    color: #5c4033; /* Màu nâu nhạt */
+    font-weight: 500;
+    margin: 0;
+}
+
+/* --- Category tab --- */
+.category-tab-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+}
+.category-tab-wrapper {
+    position: relative;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.line {
+    border-top: 1px solid #e0c9a6;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    z-index: 0;
+}
+.category-tab {
+    display: inline-block;
+    background-color: #fdf6ec;
+    border: 1px solid #e0c9a6;
+    border-radius: 8px;
+    padding: 10px 25px;
+    font-weight: bold;
+    color: #7a4e2d;
+    z-index: 1;
+    font-size: 18px;
+    position: relative;
+}
+
+/* --- Product cards --- */
+.product-list {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+.product-card {
+    background-color: white;
+    width: 220px;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.product-image {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #fffaf0;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+.product-name {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+}
+.product-price {
+    color: #a47148;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+.btn-add {
+    background-color: #a47148;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn-add:hover {
+    background-color: #7a4e2d;
+}
+.xemthem {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    color: #a47148;
+    margin: 2rem 0;
+    text-decoration: none;
+}
+.xemthem:hover {
+    text-decoration: underline;
+    color: #7a4e2d;
+}
+
+/* --- Product cards --- */
+.product-list {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+.product-card {
+    background-color: white;
+    width: 220px;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.product-image {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #fffaf0;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+.product-name {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+}
+.product-price {
+    color: #a47148;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+.btn-add {
+    background-color: #a47148;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn-add:hover {
+    background-color: #7a4e2d;
+}
+.xemthem {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    color: #a47148;
+    margin: 2rem 0;
+    text-decoration: none;
+}
+.xemthem:hover {
+    text-decoration: underline;
+    color: #7a4e2d;
+}
+
+/* --- Pre-footer --- */
+.pre-footer {
+    background-color: #fdf6ec;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+.pre-footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+}
+.youtube-video iframe {
+    flex: 1 1 500px;
+    max-width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+.tips-section h3 {
+    font-size: 1.3rem;
+    color: #7a4e2d;
+    margin-bottom: 1rem;
+}
+.tip-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: inherit;
+}
+.tip-item:hover .tip-title {
+    color: #7a4e2d;
+    text-decoration: underline;
+}
+.tip-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 1rem;
+}
+.tip-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #a47148;
+    margin-bottom: 0.25rem;
+}
+.tip-description {
+    font-size: 0.875rem;
+    color: #333;
+}

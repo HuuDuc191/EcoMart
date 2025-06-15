@@ -1,5 +1,19 @@
+<%@page import="java.util.List"%>
+<%@page import="model.Product"%>
+<%@page import="dao.viewProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+//    List<Product> featuredProducts = (List<Product>) request.getAttribute("featuredProducts");
+    viewProductDAO dao = new viewProductDAO();
+    List<Product> featuredProducts = dao.getFeaturedProducts();
+    List<Product> drinkProducts = dao.getDrinkProducts();
+    List<Product> FruitProducts = dao.getFruitProducts();
+    List<Product> CandyProducts = dao.getCandyProducts();
+    List<Product> CosmeticProducts = dao.getCosmeticProducts();
+    List<Product> MilkProducts = dao.getMilkProducts();
+    List<Product> MotherBabyProducts = dao.getMotherBabyProducts();
+%>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -17,6 +31,7 @@
         <script defer src="./homepage/js/homeJs.js"></script>
         <!-- Animate on scroll -->
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link rel="stylesheet" href="./css/home.css">
     </head>
     <body>
         <jsp:include page="header.jsp"/>
@@ -47,7 +62,7 @@
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 </div>
-                
+
                 <!-- The dots/circles -->
                 <div class="dots-container">
                     <span class="dot" onclick="currentSlide(1)"></span>
@@ -127,383 +142,22 @@
                     </div>
                     <a href="#" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
                 </div>
-                
                 <div class="product-grid">
+                    <%
+                        if (featuredProducts != null && !featuredProducts.isEmpty()) {
+                            for (Product p : featuredProducts) {
+                    %>
                     <div class="product-card">
                         <div class="product-badge">Hot</div>
                         <div class="product-image-container">
-                            <img src="homepage/img/SonBlackRouge.jpg" alt="Son Black Rouge" class="product-image">
+                            <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
                             <div class="product-actions">
                                 <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
                                 <button class="action-btn"><i class="fas fa-eye"></i></button>
                             </div>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-name">Son Black Rouge</h3>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span>(45)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">150.000đ</span>
-                                <span class="unit">/ thỏi</span>
-                            </div>
-                            <div class="button-group">
-                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
-                                <button class="buy-now-btn">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-badge sale">-15%</div>
-                        <div class="product-image-container">
-                            <img src="homepage/img/yensaocollagen.jpg" alt="Nước yến sào" class="product-image">
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">Nước yến sào collagen</h3>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(32)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">25.000đ</span>
-                                <span class="unit">/ chai</span>
-                                <span class="old-price">30.000đ</span>
-                            </div>
-                            <div class="button-group">
-                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
-                                <button class="buy-now-btn">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="homepage/img/banhque.jpg" alt="Bánh quế 4 vị" class="product-image">
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">Bánh quế 4 vị</h3>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="far fa-star"></i>
-                                <span>(18)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">14.000đ</span>
-                                <span class="unit">/ gói</span>
-                            </div>
-                            <div class="button-group">
-                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
-                                <button class="buy-now-btn">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-badge new">Mới</div>
-                        <div class="product-image-container">
-                            <img src="homepage/img/mitsay.jpg" alt="Mít sấy gói 100g" class="product-image">
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">Mít sấy gói 100g</h3>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(27)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">30.000đ</span>
-                                <span class="unit">/ gói</span>
-                            </div>
-                            <div class="button-group">
-                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
-                                <button class="buy-now-btn">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#" class="see-more-btn">Xem thêm sản phẩm <i class="fas fa-arrow-right"></i></a>
-            </section>
-
-            <!-- Banner -->
-            <section class="banner-section" data-aos="fade-up">
-                <img src="./homepage/img/freecompress-hero-banner-pc_202504181036599398.jpg" alt="Banner" class="full-width-banner">
-            </section>
-
-            <!-- Beverages Section -->
-            <section class="product-section" data-aos="fade-up">
-                <div class="section-header">
-                    <div class="section-title">
-                        <i class="fas fa-glass-cheers"></i> Nước giải khát
-                    </div>
-                    <a href="#" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
-                </div>
-                
-                <div class="product-grid">
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/8820/238556/bhx/238556-thumb-omni_202505141343284334.jpg" alt="Coca Cola" class="product-image">
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">Coca Cola Original</h3>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(42)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">15.000đ</span>
-                                <span class="unit">/ chai</span>
-                            </div>
-                            <div class="button-group">
-                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
-                                <button class="buy-now-btn">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/8781/332800/bhx/thit-dui-heo-300g_202504121350469749.jpg" alt="Pepsi" class="product-image">
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">Pepsi</h3>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(36)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">15.000đ</span>
-                                <span class="unit">/ chai</span>
-                            </div>
-                            <div class="button-group">
-                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
-                                <button class="buy-now-btn">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-badge sale">-10%</div>
-                        <div class="product-image-container">
-                            <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/8783/309143/bhx/trung-ga-so-hop-10-tang-2_202504121919506761.jpg" alt="Sprite" class="product-image">
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">Sprite Chanh</h3>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(19)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">13.500đ</span>
-                                <span class="unit">/ chai</span>
-                                <span class="old-price">15.000đ</span>
-                            </div>
-                            <div class="button-group">
-                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
-                                <button class="buy-now-btn">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/8783/309143/bhx/trung-ga-so-hop-10-tang-2_202504121919506761.jpg" alt="Fanta" class="product-image">
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">Fanta Orange</h3>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(24)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">15.000đ</span>
-                                <span class="unit">/ chai</span>
-                            </div>
-                            <div class="button-group">
-                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
-                                <button class="buy-now-btn">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#" class="see-more-btn">Xem thêm sản phẩm <i class="fas fa-arrow-right"></i></a>
-            </section>
-
-            <!-- Banner 2 -->
-            <section class="banner-section" data-aos="fade-up">
-                <img src="./homepage/img/freecompress-pc-1800x480-1_202503052034203959.jpg" alt="Banner" class="full-width-banner">
-            </section>
-
-            <!-- Fruits Section -->
-            <section class="product-section" data-aos="fade-up">
-                <div class="section-header">
-                    <div class="section-title">
-                        <i class="fas fa-apple-alt"></i> Trái cây
-                    </div>
-                    <a href="#" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
-                </div>
-                
-                <div class="product-grid">
-                    <div class="product-card">
-                        <div class="product-badge organic">Hữu cơ</div>
-                        <div class="product-image-container">
-                            <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/8820/238556/bhx/238556-thumb-omni_202505141343284334.jpg" alt="Táo Mỹ" class="product-image">
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">Táo Mỹ</h3>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span>(32)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">45.000đ</span>
-                                <span class="unit">/ kg</span>
-                            </div>
-                            <div class="button-group">
-                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
-                                <button class="buy-now-btn">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-badge sale">-20%</div>
-                        <div class="product-image-container">
-                            <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/8781/332800/bhx/thit-dui-heo-300g_202504121350469749.jpg" alt="Cam Sành" class="product-image">
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">Cam Sành</h3>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span>(48)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">32.000đ</span>
-                                <span class="unit">/ kg</span>
-                                <span class="old-price">40.000đ</span>
-                            </div>
-                            <div class="button-group">
-                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
-                                <button class="buy-now-btn">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/8783/309143/bhx/trung-ga-so-hop-10-tang-2_202504121919506761.jpg" alt="Xoài" class="product-image">
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">Xoài Cát Hòa Lộc</h3>
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(56)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">55.000đ</span>
-                                <span class="unit">/ kg</span>
-                            </div>
-                            <div class="button-group">
-                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
-                                <button class="buy-now-btn">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-badge new">Mới</div>
-                        <div class="product-image-container">
-                            <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Products/Images/8783/309143/bhx/trung-ga-so-hop-10-tang-2_202504121919506761.jpg" alt="Nho" class="product-image">
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">Nho Mỹ không hạt</h3>
+                            <h3 class="product-name"><%= p.getProductName()%></h3>
                             <div class="product-rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -512,19 +166,378 @@
                                 <i class="fas fa-star-half-alt"></i>
                                 <span>(29)</span>
                             </div>
-                            <div class="product-price">
-                                <span class="current-price">120.000đ</span>
-                                <span class="unit">/ kg</span>
-                            </div>
+                            <div class="product-price"><%= new java.text.DecimalFormat("#,###").format(p.getPrice())%> VNĐ / <%= p.getUnit()%></div>
                             <div class="button-group">
                                 <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
                                 <button class="buy-now-btn">Mua ngay</button>
                             </div>
                         </div>
                     </div>
+                    <%
+                        }
+                    } else {
+                    %>
+                    <p class="no-featured-products">Không có sản phẩm nổi bật nào để hiển thị.</p>
+                    <%
+                        }
+                    %>
                 </div>
                 <a href="#" class="see-more-btn">Xem thêm sản phẩm <i class="fas fa-arrow-right"></i></a>
             </section>
+
+
+            <!--mở đầu-->
+
+            <section class="banner-section" data-aos="fade-up">
+                <img src="./homepage/img/freecompress-hero-banner-pc_202504181036599398.jpg" alt="Banner" class="full-width-banner">
+            </section>
+
+            <section class="product-section" data-aos="fade-up">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fas fa-glass-cheers"></i> Nước giải khát
+                    </div>
+
+                    <a href="#" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="product-grid">
+                    <%
+                        if (drinkProducts != null && !drinkProducts.isEmpty()) {
+                            for (Product p : drinkProducts) {
+                    %>
+                    <div class="product-card">
+                        <!--<div class="product-badge">Hot</div>-->
+                        <div class="product-image-container">
+                            <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
+                            <div class="product-actions">
+                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name"><%= p.getProductName()%></h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(29)</span>
+                            </div>
+                            <div class="product-price"><%= new java.text.DecimalFormat("#,###").format(p.getPrice())%> VNĐ / <%= p.getUnit()%></div>
+                            <div class="button-group">
+                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
+                                <button class="buy-now-btn">Mua ngay</button>
+                            </div>
+                        </div>
+                    </div>
+                    <%
+                        }
+                    } else {
+                    %>
+                    <p class="no-featured-products">Không có sản phẩm nổi bật nào để hiển thị.</p>
+                    <%
+                        }
+                    %>
+                </div>
+                <a href="#" class="see-more-btn">Xem thêm sản phẩm <i class="fas fa-arrow-right"></i></a>
+            </section>
+
+            <!--kết thúc-->
+
+            <!--mở đầu-->
+
+            <section class="banner-section" data-aos="fade-up">
+                <img src="./homepage/img/freecompress-hero-banner-pc_202504181036599398.jpg" alt="Banner" class="full-width-banner">
+            </section>
+
+            <section class="product-section" data-aos="fade-up">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fas fa-apple-alt"></i> Sữa
+                    </div>
+                    <a href="#" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="product-grid">
+                    <%
+                        if (MilkProducts != null && !MilkProducts.isEmpty()) {
+                            for (Product p : MilkProducts) {
+                    %>
+                    <div class="product-card">
+                        <!--<div class="product-badge">Hot</div>-->
+                        <div class="product-image-container">
+                            <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
+                            <div class="product-actions">
+                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name"><%= p.getProductName()%></h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(29)</span>
+                            </div>
+                            <div class="product-price"><%= new java.text.DecimalFormat("#,###").format(p.getPrice())%> VNĐ / <%= p.getUnit()%></div>
+                            <div class="button-group">
+                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
+                                <button class="buy-now-btn">Mua ngay</button>
+                            </div>
+                        </div>
+                    </div>
+                    <%
+                        }
+                    } else {
+                    %>
+                    <p class="no-featured-products">Không có sản phẩm nổi bật nào để hiển thị.</p>
+                    <%
+                        }
+                    %>
+                </div>
+                <a href="#" class="see-more-btn">Xem thêm sản phẩm <i class="fas fa-arrow-right"></i></a>
+            </section>
+
+            <!--kết thúc--> 
+
+            <!--mở đầu-->
+
+            <section class="banner-section" data-aos="fade-up">
+                <img src="./homepage/img/freecompress-hero-banner-pc_202504181036599398.jpg" alt="Banner" class="full-width-banner">
+            </section>
+
+            <section class="product-section" data-aos="fade-up">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fas fa-apple-alt"></i> Trái cây
+                    </div>
+                    <a href="#" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="product-grid">
+                    <%
+                        if (FruitProducts != null && !FruitProducts.isEmpty()) {
+                            for (Product p : FruitProducts) {
+                    %>
+                    <div class="product-card">
+                        <!--<div class="product-badge">Hot</div>-->
+                        <div class="product-image-container">
+                            <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
+                            <div class="product-actions">
+                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name"><%= p.getProductName()%></h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(29)</span>
+                            </div>
+                            <div class="product-price"><%= new java.text.DecimalFormat("#,###").format(p.getPrice())%> VNĐ / <%= p.getUnit()%></div>
+                            <div class="button-group">
+                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
+                                <button class="buy-now-btn">Mua ngay</button>
+                            </div>
+                        </div>
+                    </div>
+                    <%
+                        }
+                    } else {
+                    %>
+                    <p class="no-featured-products">Không có sản phẩm nổi bật nào để hiển thị.</p>
+                    <%
+                        }
+                    %>
+                </div>
+                <a href="#" class="see-more-btn">Xem thêm sản phẩm <i class="fas fa-arrow-right"></i></a>
+            </section>
+
+            <!--kết thúc--> 
+
+            <!--mở đầu-->
+
+            <section class="banner-section" data-aos="fade-up">
+                <img src="./homepage/img/freecompress-hero-banner-pc_202504181036599398.jpg" alt="Banner" class="full-width-banner">
+            </section>
+
+            <section class="product-section" data-aos="fade-up">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fas fa-apple-alt"></i> Bánh Kẹo
+                    </div>
+                    <a href="#" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="product-grid">
+                    <%
+                        if (CandyProducts != null && !CandyProducts.isEmpty()) {
+                            for (Product p : CandyProducts) {
+                    %>
+                    <div class="product-card">
+                        <!--<div class="product-badge">Hot</div>-->
+                        <div class="product-image-container">
+                            <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
+                            <div class="product-actions">
+                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name"><%= p.getProductName()%></h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(29)</span>
+                            </div>
+                            <div class="product-price"><%= new java.text.DecimalFormat("#,###").format(p.getPrice())%> VNĐ / <%= p.getUnit()%></div>
+                            <div class="button-group">
+                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
+                                <button class="buy-now-btn">Mua ngay</button>
+                            </div>
+                        </div>
+                    </div>
+                    <%
+                        }
+                    } else {
+                    %>
+                    <p class="no-featured-products">Không có sản phẩm nổi bật nào để hiển thị.</p>
+                    <%
+                        }
+                    %>
+                </div>
+                <a href="#" class="see-more-btn">Xem thêm sản phẩm <i class="fas fa-arrow-right"></i></a>
+            </section>
+
+            <!--kết thúc--> 
+
+
+
+
+            <!--mở đầu-->
+
+            <section class="banner-section" data-aos="fade-up">
+                <img src="./homepage/img/freecompress-hero-banner-pc_202504181036599398.jpg" alt="Banner" class="full-width-banner">
+            </section>
+
+            <section class="product-section" data-aos="fade-up">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fas fa-apple-alt"></i> Mẹ Và Bé
+                    </div>
+                    <a href="#" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="product-grid">
+                    <%
+                        if (MotherBabyProducts != null && !MotherBabyProducts.isEmpty()) {
+                            for (Product p : MotherBabyProducts) {
+                    %>
+                    <div class="product-card">
+                        <!--<div class="product-badge">Hot</div>-->
+                        <div class="product-image-container">
+                            <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
+                            <div class="product-actions">
+                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name"><%= p.getProductName()%></h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(29)</span>
+                            </div>
+                            <div class="product-price"><%= new java.text.DecimalFormat("#,###").format(p.getPrice())%> VNĐ / <%= p.getUnit()%></div>
+                            <div class="button-group">
+                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
+                                <button class="buy-now-btn">Mua ngay</button>
+                            </div>
+                        </div>
+                    </div>
+                    <%
+                        }
+                    } else {
+                    %>
+                    <p class="no-featured-products">Không có sản phẩm nổi bật nào để hiển thị.</p>
+                    <%
+                        }
+                    %>
+                </div>
+                <a href="#" class="see-more-btn">Xem thêm sản phẩm <i class="fas fa-arrow-right"></i></a>
+            </section>
+
+            <!--kết thúc--> 
+
+            <!--mở đầu-->
+
+            <section class="banner-section" data-aos="fade-up">
+                <img src="./homepage/img/freecompress-hero-banner-pc_202504181036599398.jpg" alt="Banner" class="full-width-banner">
+            </section>
+
+            <section class="product-section" data-aos="fade-up">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fas fa-apple-alt"></i> Mỹ Phẩm
+                    </div>
+                    <a href="#" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="product-grid">
+                    <%
+                        if (CosmeticProducts != null && !CosmeticProducts.isEmpty()) {
+                            for (Product p : CosmeticProducts) {
+                    %>
+                    <div class="product-card">
+                        <!--<div class="product-badge">Hot</div>-->
+                        <div class="product-image-container">
+                            <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
+                            <div class="product-actions">
+                                <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name"><%= p.getProductName()%></h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(29)</span>
+                            </div>
+                            <div class="product-price"><%= new java.text.DecimalFormat("#,###").format(p.getPrice())%> VNĐ / <%= p.getUnit()%></div>
+                            <div class="button-group">
+                                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Giỏ hàng</button>
+                                <button class="buy-now-btn">Mua ngay</button>
+                            </div>
+                        </div>
+                    </div>
+                    <%
+                        }
+                    } else {
+                    %>
+                    <p class="no-featured-products">Không có sản phẩm nổi bật nào để hiển thị.</p>
+                    <%
+                        }
+                    %>
+                </div>
+                <a href="#" class="see-more-btn">Xem thêm sản phẩm <i class="fas fa-arrow-right"></i></a>
+            </section>
+
+            <!--kết thúc--> 
+
 
             <!-- Tips Section -->
             <section class="tips-section" data-aos="fade-up">
@@ -534,7 +547,7 @@
                     </div>
                     <a href="meo-vat.html" class="view-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
                 </div>
-                
+
                 <div class="tips-container">
                     <div class="tips-video">
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/jN58QsGK4WI?si=2bBTyZJ0KCMstDbu"
@@ -542,7 +555,7 @@
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
-                    
+
                     <div class="tips-list">
                         <a href="meo-vat.html#lam-sach-rau-cu" class="tip-item">
                             <div class="tip-image">
@@ -553,7 +566,7 @@
                                 <p class="tip-desc">Học cách rửa rau củ đúng cách để loại bỏ bụi bẩn và hóa chất.</p>
                             </div>
                         </a>
-                        
+
                         <a href="meo-vat.html#bao-quan-thit-ca" class="tip-item">
                             <div class="tip-image">
                                 <img src="https://th.bing.com/th/id/OIP.quVOFTDt4CAdc7VhwyocagHaEo?w=295&h=184&c=7&r=0&o=7&cb=iwp2&dpr=1.3&pid=1.7&rm=3" alt="Bảo quản thịt cá">
@@ -563,7 +576,7 @@
                                 <p class="tip-desc">Mẹo giữ thịt cá tươi ngon trong tủ lạnh hoặc tủ đông.</p>
                             </div>
                         </a>
-                        
+
                         <a href="meo-vat.html#chong-lang-phi-thuc-pham" class="tip-item">
                             <div class="tip-image">
                                 <img src="https://th.bing.com/th/id/OIP.-2dh96wDCZIaPp8k1q3b7gHaE8?w=269&h=180&c=7&r=0&o=7&cb=iwp2&dpr=1.3&pid=1.7&rm=3" alt="Chống lãng phí">
@@ -573,7 +586,7 @@
                                 <p class="tip-desc">Cách tận dụng thức ăn thừa để tiết kiệm và bảo vệ môi trường.</p>
                             </div>
                         </a>
-                        
+
                         <a href="meo-vat.html#lam-nuoc-uong-tai-nha" class="tip-item">
                             <div class="tip-image">
                                 <img src="https://th.bing.com/th/id/OIP.qtsxKJLVM8WZX27VbcEp3AHaE8?w=242&h=180&c=7&r=0&o=7&cb=iwp2&dpr=1.3&pid=1.7&rm=3" alt="Nước uống tại nhà">
@@ -590,52 +603,55 @@
 
         <jsp:include page="scrollToTop.jsp"/>
         <jsp:include page="footer.jsp"/>
-        
         <!-- JavaScript -->
         <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
         <script>
-            // Initialize AOS
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: true,
-                delay: 100
-            });
-            
-            // Current slide index
-            let slideIndex = 1;
-            showSlides(slideIndex);
-            
-            // Auto slide every 4 seconds
-            setInterval(function() {
-                plusSlides(1);
-            }, 4000);
-            
-            // Next/previous controls
-            function plusSlides(n) {
-                showSlides(slideIndex += n);
-            }
-            
-            // Thumbnail image controls
-            function currentSlide(n) {
-                showSlides(slideIndex = n);
-            }
-            
-            function showSlides(n) {
-                let i;
-                let slides = document.getElementsByClassName("mySlides");
-                let dots = document.getElementsByClassName("dot");
-                if (n > slides.length) {slideIndex = 1}
-                if (n < 1) {slideIndex = slides.length}
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-                for (i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active", "");
-                }
-                slides[slideIndex-1].style.display = "block";
-                dots[slideIndex-1].className += " active";
-            }
+                        // Initialize AOS
+                        AOS.init({
+                            duration: 800,
+                            easing: 'ease-in-out',
+                            once: true,
+                            delay: 100
+                        });
+
+                        // Current slide index
+                        let slideIndex = 1;
+                        showSlides(slideIndex);
+
+                        // Auto slide every 4 seconds
+                        setInterval(function () {
+                            plusSlides(1);
+                        }, 4000);
+
+                        // Next/previous controls
+                        function plusSlides(n) {
+                            showSlides(slideIndex += n);
+                        }
+
+                        // Thumbnail image controls
+                        function currentSlide(n) {
+                            showSlides(slideIndex = n);
+                        }
+
+                        function showSlides(n) {
+                            let i;
+                            let slides = document.getElementsByClassName("mySlides");
+                            let dots = document.getElementsByClassName("dot");
+                            if (n > slides.length) {
+                                slideIndex = 1
+                            }
+                            if (n < 1) {
+                                slideIndex = slides.length
+                            }
+                            for (i = 0; i < slides.length; i++) {
+                                slides[i].style.display = "none";
+                            }
+                            for (i = 0; i < dots.length; i++) {
+                                dots[i].className = dots[i].className.replace(" active", "");
+                            }
+                            slides[slideIndex - 1].style.display = "block";
+                            dots[slideIndex - 1].className += " active";
+                        }
         </script>
     </body>
 </html>
