@@ -3,55 +3,63 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Kết quả tìm kiếm</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Kết quả tìm kiếm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Font Awesome + Bootstrap or your custom CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
-  <style>
-    /* (Toàn bộ CSS header + sidebar giống mình đã gửi ở trên...) */
-  </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-light">
 
-<!-- Header -->
-<header>... (giống phần header ở trên) ...</header>
+<!-- Search Bar -->
+<div class="container py-4">
+    <form action="search" method="get" class="d-flex justify-content-center">
+        <div class="input-group w-50">
+            <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm sản phẩm..." value="<%= request.getAttribute("keyword") %>" required>
+            <button type="submit" class="btn btn-outline-secondary">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
+</div>
 
-<div class="layout">
-  <!-- Sidebar -->
-  <aside>... (giữ nguyên như trên) ...</aside>
-
-  <!-- Main content -->
-  <main>
-    <h2 class="section-title">🔍 Kết quả tìm kiếm: "<%= request.getAttribute("keyword") %>"</h2>
+<!-- Tiêu đề kết quả -->
+<div class="container text-center mb-3">
+    <h3>Kết quả tìm kiếm: "<%= request.getAttribute("keyword") %>"</h3>
+</div>
 
 <%
     List<Product> list = (List<Product>) request.getAttribute("results");
     String sort = (String) request.getAttribute("sort");
     if (list == null || list.isEmpty()) {
 %>
-    <p class="text-muted fst-italic">⚠ Không tìm thấy sản phẩm nào phù hợp.</p>
+    <div class="container text-center">
+        <p class="text-muted fst-italic">⚠ Không tìm thấy sản phẩm nào phù hợp.</p>
+    </div>
 <%
     } else {
 %>
 
-    <!-- Dropdown sắp xếp -->
-    <div class="d-flex justify-content-end align-items-center mb-3">
-        <form method="get" action="search" class="d-flex align-items-center">
-            <input type="hidden" name="keyword" value="<%= request.getAttribute("keyword") %>" />
-            <label class="me-2"><strong>Sắp xếp theo giá:</strong></label>
-            <select class="form-select w-auto" name="sort" onchange="this.form.submit()">
-                <option value="">-- Mặc định --</option>
-                <option value="asc" <%= "asc".equals(sort) ? "selected" : "" %>>Tăng dần</option>
-                <option value="desc" <%= "desc".equals(sort) ? "selected" : "" %>>Giảm dần</option>
-            </select>
-        </form>
-    </div>
+<!-- Sort Dropdown -->
+<div class="container mb-4 d-flex justify-content-end">
+    <form method="get" action="search" class="d-flex align-items-center">
+        <input type="hidden" name="keyword" value="<%= request.getAttribute("keyword") %>" />
+        <label class="me-2"><strong>Sắp xếp theo giá:</strong></label>
+        <select class="form-select w-auto" name="sort" onchange="this.form.submit()">
+            <option value="">-- Mặc định --</option>
+            <option value="asc" <%= "asc".equals(sort) ? "selected" : "" %>>Tăng dần</option>
+            <option value="desc" <%= "desc".equals(sort) ? "selected" : "" %>>Giảm dần</option>
+        </select>
+    </form>
+</div>
 
-    <!-- Product Grid -->
+<!-- Product Grid -->
+<div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
 <%
         for (Product p : list) {
@@ -75,7 +83,7 @@
                     <p class="card-text fw-bold text-danger mb-1"><%= String.format("%,.0f", p.getPrice()) %>đ</p>
                     <small class="text-muted">/ <%= p.getUnit() %></small>
                     <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-outline-secondary"><i class="fas fa-shopping-cart me-1"></i> Giỏ hàng</button>
+                        <button class="btn btn-outline-secondary"><i class="fas fa-shopping-cart me-1"></i>Giỏ hàng</button>
                         <button class="btn btn-success">Mua ngay</button>
                     </div>
                 </div>
@@ -85,12 +93,13 @@
         }
 %>
     </div>
+</div>
 <%
     }
 %>
 
-  </main>
-</div>
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
