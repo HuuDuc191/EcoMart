@@ -1,0 +1,150 @@
+/* searchResult.css */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+    align-items: start;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.2s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image-container {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.action-btn {
+    background-color: #fff;
+    border: none;
+    padding: 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s;
+}
+
+.action-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    word-break: break-word;
+}
+
+.product-rating i {
+    color: #ffc107;
+}
+
+.product-price {
+    font-size: 16px;
+    color: #e91e63;
+}
+
+.unit {
+    color: #777;
+    font-size: 13px;
+    margin-left: 4px;
+}
+
+.button-group {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.add-to-cart-btn,
+.buy-now-btn {
+    flex: 1;
+    padding: 8px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.add-to-cart-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #45a049;
+}
+
+.buy-now-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.buy-now-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Sort form style */
+form[action="search"] {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+label[for="sort"] {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#sort {
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Search in search */
