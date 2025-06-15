@@ -86,7 +86,7 @@
                     <div class="category-item">
                         <a href="#">
                             <div class="category-icon">
-                                <img src="https://ts1.mm.bing.net/th?id=OIP.FCF2S7TfFoDIVt8g1DWciwHaHa&pid=15.1" alt="Nước giải khát">
+                                <img src="assets/img/cocacola330ml.jpg" alt="Nước giải khát">
                             </div>
                             <p>Nước giải khát</p>
                         </a>
@@ -94,7 +94,7 @@
                     <div class="category-item">
                         <a href="#">
                             <div class="category-icon">
-                                <img src="https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/8788/image-2461_202410151408000050.png" alt="Trái cây">
+                                <img src="assets/img/traicay.webp" alt="Trái cây">
                             </div>
                             <p>Trái cây</p>
                         </a>
@@ -102,7 +102,7 @@
                     <div class="category-item">
                         <a href="#">
                             <div class="category-icon">
-                                <img src="https://th.bing.com/th/id/OIP.VqYSq7knIlebLnvMfmcaDgHaHa?w=174&h=180&c=7&r=0&o=7&cb=iwp2&dpr=1.3&pid=1.7&rm=3" alt="Bánh kẹo">
+                                <img src="assets/img/banhkeo.jpg" alt="Bánh kẹo">
                             </div>
                             <p>Bánh kẹo</p>
                         </a>
@@ -110,7 +110,7 @@
                     <div class="category-item">
                         <a href="#">
                             <div class="category-icon">
-                                <img src="https://th.bing.com/th/id/OIP.VqYSq7knIlebLnvMfmcaDgHaHa?w=174&h=180&c=7&r=0&o=7&cb=iwp2&dpr=1.3&pid=1.7&rm=3" alt="Bánh kẹo">
+                                <img src="assets/img/sua.jpg" alt="Sữa các loại">
                             </div>
                             <p>Sửa các loại</p>
                         </a>
@@ -118,7 +118,7 @@
                     <div class="category-item">
                         <a href="#">
                             <div class="category-icon">
-                                <img src="homepage/img/mother-child-icon.png" alt="Mẹ và bé">
+                                <img src="assets/img/me&be.jpg" alt="Mẹ và bé">
                             </div>
                             <p>Mẹ và bé</p>
                         </a>
@@ -126,7 +126,7 @@
                     <div class="category-item">
                         <a href="#">
                             <div class="category-icon">
-                                <img src="homepage/img/mypham.jpg" alt="Mỹ phẩm">
+                                <img src="assets/img/mypham.jpg" alt="Mỹ phẩm">
                             </div>
                             <p>Mỹ phẩm</p>
                         </a>

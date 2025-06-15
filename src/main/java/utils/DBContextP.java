@@ -24,7 +24,7 @@ public class DBContextP {
             String dbURL = "jdbc:sqlserver://localhost:1433;"
                     + "databaseName=EcoMart;"
                     + "user=sa;"
-                    + "password=123456;"
+                    + "password=1;"
                     + "encrypt=true;trustServerCertificate=true;";
             conn = DriverManager.getConnection(dbURL);
             if (conn != null) {

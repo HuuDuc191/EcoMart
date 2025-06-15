@@ -100,11 +100,11 @@
                 <div class="logout">
                     <a href="<%= request.getContextPath()%>/logout">Dang Xuat</a>
                 </div>
-            </aside>dsfdsgdsgas
+            </aside>
             <main class="main">
                 <h2>Admin Dashboard</h2>
                 <p>Chào mừng đến với bảng điều khiển quản trị!</p>
             </main>
         </div>
-    </body>dgdgdsgsdgs
+    </body>
 </html>

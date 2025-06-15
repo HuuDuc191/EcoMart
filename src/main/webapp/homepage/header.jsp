@@ -9,7 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <!-- Google Font -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-        <link rel="stylesheet" href="./homepage/css/main.css?version=<%= System.currentTimeMillis() %>"/>
+        <link rel="stylesheet" href="./homepage/css/main.css?version=<%= System.currentTimeMillis()%>"/>
     </head>
     <body>
 
@@ -23,7 +23,7 @@
                     <a href="#">Nước suối</a>
                 </div>
             </div>
-            
+
             <div class="category">
                 <button onclick="toggleCategory(this)">🧃 Sữa các loại <i class="fa fa-chevron-down"></i></button>
                 <div class="category-content">
@@ -76,19 +76,19 @@
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Tìm kiếm sản phẩm...">
             </div>
-        
-       <div class="header-icons">
-            <% String username = (String) session.getAttribute("username"); %>
-            <% if (username != null) { %>
-                <span>Chào, <%= username %></span>
-                <a href="<%= request.getContextPath() %>/logout">Đăng xuất</a>
-            <% } else { %>
-                <a href="<%= request.getContextPath() %>/login">Đăng nhập</a>
-                <a href="<%= request.getContextPath() %>/register">Đăng ký</a>
-                <a href="<%= request.getContextPath() %>/cart">Giỏ hàng</a>
-            <% } %>
-        </div>
-            
+
+            <div class="header-icons">
+                <% String username = (String) session.getAttribute("username"); %>
+                <% if (username != null) {%>
+                <span>Chào, <%= username%></span>
+                <a href="<%= request.getContextPath()%>/logout">Đăng xuất</a>
+                <% } else {%>
+                <a href="<%= request.getContextPath()%>/cart"><i class="fas fa-shopping-cart"></i>Giỏ hàng</a>
+                <a href="<%= request.getContextPath()%>/login"><i class="fas fa-sign-in-alt"></i>Đăng nhập</a>
+                <a href="<%= request.getContextPath()%>/register"><i class="fas fa-user-plus"></i>Đăng ký</a>
+                <% }%>
+            </div>
+
         </div>
 
         <!-- JS -->
