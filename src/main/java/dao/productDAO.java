@@ -5,7 +5,7 @@
 package dao;
 
 import java.util.Date;
-
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,12 +16,153 @@ import model.Category;
 import model.Product;
 import model.Supplier;
 import utils.DBContextP;
+import utils.DBContext;
 
 /**
  *
  * @author LNQB
  */
 public class productDAO extends DBContextP {
+
+    private Connection conn;
+
+    public productDAO() {
+        try {
+            conn = new DBContext().getConnection(); // Sử dụng DBContext
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    // Lấy tất cả sản phẩm
+
+    public ArrayList<Product> getAllProducts() {
+        ArrayList<Product> list = new ArrayList<>();
+        String sql = """
+        SELECT p.*, 
+               c.CategoryID, c.CategoryName, c.ParentID,
+               s.SupplierID, s.BrandName, s.NameSupplier, s.Address, s.Email, s.Phone, s.Status AS SupplierStatus
+        FROM Product p
+        JOIN Categories c ON p.CategoryID = c.CategoryID
+        JOIN Supplier s ON p.SupplierID = s.SupplierID
+    """;
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setProductID(rs.getInt("ProductID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setUnit(rs.getString("Unit"));
+                p.setDescription(rs.getString("Description"));
+                p.setImage(rs.getString("Image"));
+                p.setCreatedAt(rs.getTimestamp("CreatedAt"));
+                p.setStatus(rs.getString("Status"));
+
+                // Set category
+                Category c = new Category();
+                c.setCategoryID(rs.getInt("CategoryID"));
+                c.setCategoryName(rs.getString("CategoryName"));
+                c.setParentID(rs.getInt("ParentID"));
+                p.setCategory(c);
+
+                // Set supplier
+                Supplier s = new Supplier();
+                s.setSupplierID(rs.getInt("SupplierID"));
+                s.setBrandName(rs.getString("BrandName"));
+                s.setNameSupplier(rs.getString("NameSupplier"));
+                s.setAddress(rs.getString("Address"));
+                s.setEmail(rs.getString("Email"));
+                s.setPhone(rs.getString("Phone"));
+                s.setStatus(rs.getString("SupplierStatus"));
+                p.setSupplier(s);
+
+                list.add(p);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public Product getProductByIdDetail(int id) {
+        Product p = null;
+        String sql = """
+        SELECT p.*, 
+               c.CategoryID, c.CategoryName, c.ParentID,
+               s.SupplierID, s.BrandName, s.NameSupplier, s.Address, s.Email, s.Phone, s.Status AS SupplierStatus
+        FROM Product p
+        JOIN Categories c ON p.CategoryID = c.CategoryID
+        JOIN Supplier s ON p.SupplierID = s.SupplierID
+        WHERE p.ProductID = ?
+    """;
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                p = new Product();
+                p.setProductID(rs.getInt("ProductID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setUnit(rs.getString("Unit"));
+                p.setDescription(rs.getString("Description"));
+                p.setImage(rs.getString("Image"));
+                p.setCreatedAt(rs.getTimestamp("CreatedAt"));
+                p.setStatus(rs.getString("Status"));
+
+                // Set category
+                Category c = new Category();
+                c.setCategoryID(rs.getInt("CategoryID"));
+                c.setCategoryName(rs.getString("CategoryName"));
+                c.setParentID(rs.getInt("ParentID"));
+                p.setCategory(c);
+
+                // Set supplier
+                Supplier s = new Supplier();
+                s.setSupplierID(rs.getInt("SupplierID"));
+                s.setBrandName(rs.getString("BrandName"));
+                s.setNameSupplier(rs.getString("NameSupplier"));
+                s.setAddress(rs.getString("Address"));
+                s.setEmail(rs.getString("Email"));
+                s.setPhone(rs.getString("Phone"));
+                s.setStatus(rs.getString("SupplierStatus"));
+                p.setSupplier(s);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return p;
+    }
+
+    public List<Product> getProductsByCategory(int parentCategoryId, int excludedProductId) {
+        List<Product> list = new ArrayList<>();
+        String sql = """
+        SELECT p.ProductID, p.ProductName, p.Price, p.Image, p.Unit
+        FROM Product p
+        JOIN Categories c ON p.CategoryID = c.CategoryID
+        WHERE c.ParentID = ? AND p.ProductID != ?
+    """;
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, parentCategoryId);
+            ps.setInt(2, excludedProductId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setProductID(rs.getInt("ProductID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setImage(rs.getString("Image"));
+                p.setUnit(rs.getString("Unit"));
+                list.add(p);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
     public List<Product> getAll() {
         List<Product> list = new ArrayList<>();

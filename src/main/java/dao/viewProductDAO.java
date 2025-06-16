@@ -21,7 +21,7 @@ public class viewProductDAO extends DBContextP {
     public List<Product> getProductsByCategory(int parentCategoryId) {
         List<Product> list = new ArrayList<>();
         String sql = """
-            SELECT p.ProductName, p.Price, p.Image, p.Unit
+            SELECT p.ProductID, p.ProductName, p.Price, p.Image, p.Unit
             FROM Product p
             JOIN Categories c ON p.CategoryID = c.CategoryID
             WHERE c.ParentID = ?
@@ -31,6 +31,7 @@ public class viewProductDAO extends DBContextP {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Product p = new Product();
+                p.setProductID(rs.getInt("ProductID"));
                 p.setProductName(rs.getString("ProductName"));
                 p.setPrice(rs.getDouble("Price"));
                 p.setImage(rs.getString("Image"));
