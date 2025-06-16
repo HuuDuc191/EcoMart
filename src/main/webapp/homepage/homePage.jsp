@@ -153,7 +153,9 @@
                             <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
                             <div class="product-actions">
                                 <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <a href="<%= request.getContextPath()%>/ProductDetail?id=<%= p.getProductID()%>">
+                                    <i class="fas fa-eye"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="product-info">
@@ -211,7 +213,9 @@
                             <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
                             <div class="product-actions">
                                 <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <a href="<%= request.getContextPath()%>/ProductDetail?id=<%= p.getProductID()%>">
+                                    <i class="fas fa-eye"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="product-info">
@@ -269,7 +273,9 @@
                             <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
                             <div class="product-actions">
                                 <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <a href="<%= request.getContextPath()%>/ProductDetail?id=<%= p.getProductID()%>">
+                                    <i class="fas fa-eye"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="product-info">
@@ -327,7 +333,9 @@
                             <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
                             <div class="product-actions">
                                 <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <a href="<%= request.getContextPath()%>/ProductDetail?id=<%= p.getProductID()%>">
+                                    <i class="fas fa-eye"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="product-info">
@@ -385,7 +393,9 @@
                             <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
                             <div class="product-actions">
                                 <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <a href="<%= request.getContextPath()%>/ProductDetail?id=<%= p.getProductID()%>">
+                                    <i class="fas fa-eye"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="product-info">
@@ -446,7 +456,9 @@
                             <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
                             <div class="product-actions">
                                 <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <a href="<%= request.getContextPath()%>/ProductDetail?id=<%= p.getProductID()%>">
+                                    <i class="fas fa-eye"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="product-info">
@@ -504,7 +516,9 @@
                             <img src="ImageServlet?name=<%= p.getImage()%>" alt="<%= p.getProductName()%>" class="product-image">
                             <div class="product-actions">
                                 <button class="action-btn"><i class="fas fa-cart-plus"></i></button>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <a href="<%= request.getContextPath()%>/ProductDetail?id=<%= p.getProductID()%>">
+                                    <i class="fas fa-eye"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="product-info">

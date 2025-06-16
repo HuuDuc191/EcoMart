@@ -4,6 +4,8 @@
  */
 package controller;
 
+import dao.productDAO;
+import dao.viewProductDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,6 +13,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import model.Product;
 
 @WebServlet(name = "HomeServlet", urlPatterns = { "/home" })
 public class HomeServlet extends HttpServlet {
@@ -54,6 +59,10 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                        viewProductDAO dao = new viewProductDAO();
+        List<Product> productList = dao.getCandyProducts();
+
+        request.setAttribute("productList", productList);
         System.out.println("Forwarding to /homepage/homePage.jsp");
         request.getRequestDispatcher("/homepage/homePage.jsp").forward(request, response);
     }

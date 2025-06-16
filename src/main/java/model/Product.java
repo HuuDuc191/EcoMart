@@ -15,10 +15,9 @@ public class Product {
     private Category category;
     private Supplier supplier;
     private double averageRating;
+    private String status;
 
-    public Product(int aInt, String string, String string0, double aDouble, int aInt0) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 
     public double getAverageRating() {
         return averageRating;
@@ -28,6 +27,7 @@ public class Product {
         this.averageRating = averageRating;
     }
 
+    
     public Product(int productID, String productName, double price, int quantity, String unit, String description, String image, Timestamp createdAt) {
         this.productID = productID;
         this.productName = productName;
@@ -136,6 +136,15 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
